@@ -48,8 +48,12 @@
     
 </body>
 ```
-* <link rel="stylesheet" href="css/main.css"> 상단 title 태그 밑에 css와 연결을 위한 코드 추가
 
+* 상단 title 태그 밑에 css와 연결을 위한 코드 추가
+
+```html
+<link rel="stylesheet" href="css/main.css"> 
+```
     
 ``` css
 
