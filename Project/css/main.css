@@ -20,8 +20,8 @@ button:focus {outline: none}
 /* layout */
 body{font-family:'Noto Sans KR', sans-serif; background: #ddd; font-size: 14px; color:#000; line-height:1.4;}
 .wrap {width: 100%; margin: 0 auto; overflow: hidden;}
-
-.en {font-family: 'Unna', serif;}
+.en {font-family: 'Gowun Batang', serif; font-weight: bold;}
+/*.en {font-family: 'Unna', serif;}*/
 .en_1{font-family: 'Maven Pro', sans-serif;}
 
 
