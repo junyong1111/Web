@@ -154,24 +154,306 @@ import logo from './logo.svg';
 style속성은 {} 안에 오브젝트 형식으로 넣어줘야 함
 
 ```javascript
-<div style={{color : 'blue', fontSize : '30px'}} >
-</div>
+<div style={{color : 'blue', fontSize : '30px'}} > </div>
 ```
 
+</div>
+</details>
+
+<details>
+<summary> 3강 변수를 담는 새로운 방법 state </summary>
+<div markdown="1">   
+
+1. 글 목록만들기
+
+### App.js파일에 코드 추가 삽입
+
+```javascript
+<div className = "list">
+        <h3>{ hello }</h3>
+        <p>5월 11일 발행</p>
+        <hr/>
+      </div>
+```
+
+### App.css파일에 코드 추가 사입
+
+```javascript
+.list{
+  margin-top: 30px;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+```
+
+## 변수를 저장할 수 있는 또 하나의 방법 state
+
+### App.js파일에 제일 상단에 import 코드 추가삽입
+
+```javascript
+import React, { useState } from 'react';
+// useState 내장함수 사용
+```
+
+### useState를 사용하여 변수저장
+
+```javascript
+let [글제목, 글제목변경] = useState('Hello React');
+// 위 함수를 실행하면 2개의 원소를 가진 리스트를 반환 Return [a,b] 
+// a = 'Hello React'가 저장
+// b =  Hello React state를 정정해주는 함수
+// 여러개의 데이터를 리스트타입으로 전달도 가능하다
+```    
+
+### State를 쓰는 이유 ?
+- 웹을 app처럼 동작하게 하기 위해서
+- state는 변경되면 HTML이 자동으로 렌더링이 된다.
+- 일반변수는 새로고침이 되어야 렌더링이 된다.
+- 바뀌지않는 부분은 변수 수시로 바뀌는 부분은 state를 사용한다.
+
+**새로고침없이 스무스하게 재렌더링이 되려면 state를 사용해야한다**
 
 
+<details>
+<summary> App.js </summary>
+<div markdown="1">   
 
+```javascript
+import React, { useState } from 'react';
+import logo from './logo.svg';
+import poketmon from './test.jpg';
+import './App.css';
 
+function App() {
+  let [글제목, 글제목변경] = useState(['새로고침 없이','스무스하게 렌더링하려면', 'state 사용하자' ]);
 
+  return (
+    <div className="App">
+      <div className ='black-nav'>
+        <div style={{color : 'blue', fontSize : '30px'}} >Test Blog</div>
+      </div>
+      <img src={ poketmon } />
+      <div className = "list">
+        <h3>{ 글제목[0] }</h3>
+        <p>5월 11일 발행</p>
+        <hr/>
+      </div>
 
+      <div className = "list">
+        <h3>{ 글제목[1] }</h3>
+        <p>5월 12일 발행</p>
+        <hr/>
+      </div>
+
+      <div className = "list">
+        <h3>{ 글제목[2] }</h3>
+        <p>5월 13일 발행</p>
+        <hr/>
+      </div>     
+    </div>
+  );
+}
+export default App;
+```
+
+</div>
+</details>
 
 </div>
 </details>
 
 
+<details>
+<summary>4강 리액트 버튼 핸들러 장착 </summary>
+<div markdown="1">   
+
+### WARING 메시지가 보기싫다면  App.js파일 가장 윗 부분에 다음 주석 삽입
+
+```javascript
+/* eslint-disable */
+```    
+
+1. 좋아요 버튼 만들기
+
+```javascript
+<span>🥰</span> 0
+//span 태그를 클릭했을 시 카운터를 증가시켜야 함
+```    
+### onClick을 이용
+```javascript
+<span onClick = { 함수() }>🥰</span> 0
+// 함수를 정의해야 함
+<span onClick = { ()=>{} }>🥰</span> 0
+// 함수를 정의하기 싫을 때
+``` 
+
+### Click할 때마다 카운터를 증가
+state를 이용하여 카운터를 증가  
+state변경함수 사용
+
+```javascript
+let [카운트, 카운트변경] = useState(0);
+<span onClick = { ()=>{카운트변경(카운트+1)} }>🥰</span> {카운트}
+// state를 변경하려면 state변경 함수를 이용한다!
+```    
+
+<details>
+<summary> App.js </summary>
+<div markdown="1">   
+
+```javascript
+/* eslint-disable */
+import React, { useState } from 'react';
+import logo from './logo.svg';
+import poketmon from './test.jpg';
+import './App.css';
+
+function App() {
+  let [글제목, 글제목변경] = useState(['새로고침 없이','스무스하게 렌더링하려면', 'state 사용하자' ]);
+  let [카운트, 카운트변경] = useState(0);
+  return (
+    <div className="App">
+      <div className ='black-nav'>
+        <div style={{color : 'blue', fontSize : '30px'}} >Test Blog</div>
+      </div>
+      <img src={ poketmon } />
+      <div className = "list">
+        <h3>{ 글제목[0] } <span onClick = { ()=>{카운트변경(카운트+1)} }>🥰</span> {카운트}</h3>
+        <p>5월 11일 발행</p>
+        <hr/>
+      </div>
+
+      <div className = "list">
+        <h3>{ 글제목[1] }</h3>
+        <p>5월 12일 발행</p>
+        <hr/>
+      </div>
+
+      <div className = "list">
+        <h3>{ 글제목[2] }</h3>
+        <p>5월 13일 발행</p>
+        <hr/>
+      </div>   
+    </div>
+  );
+}
+
+export default App;
+
+```
 
 </div>
+</details> <!-- App.js -->
+
+</div>
+</details>  <!-- 4강 -->
+
+
+<details>
+<summary> 5강 원하는대로 State를 변경 </summary>
+<div markdown="1">   
+
+1. 버튼을 클릭해서 제목을 변경하는 법
+
+
+### 함수정의
+```javascript
+function 제목변경(){
+  var newArr = [...글제목]; //deep copy
+  newArr[0]= "변경해버리기"
+  글제목변경(newArr)
+  //직접수정이 아니라 딥카피를 이용하여 변경하면 손쉽게 변경이 가능하다. (call by reference)
+
+  // 하드코딩 방법 - > 글제목변경(글제목 ['State를 변경해서 ','글 제목을 ', '변경해보자'] )
+  // 사용시 초기 설정값 포멧을 그대로 넣어주는게 뽀인트입니당
+}
+// onClick 함수에 넣을 함수정의
+``` 
+### App.js파일 수정
+```javascript
+<button onClick={ 제목변경 }> 눌러주세용 </button>
+//함수에 이름을 넣을때는 소괄호를 빼고 넣어줘야 함!!
+```    
+
+### 순서
+1. state 카피본 생성 (깊은복사)
+2. 수정사항을 카피본에 저장
+3. 변경함수에 카피본 넣기
+
+<details>
+<summary> App.js</summary>
+<div markdown="1">   
+
+```javascript
+/* eslint-disable */
+import React, { useState } from 'react';
+import logo from './logo.svg';
+import poketmon from './test.jpg';
+import './App.css';
+
+function App() {
+  let [글제목, 글제목변경] = useState(['새로고침 없이','스무스하게 렌더링하려면', 'state 사용하자' ]);
+  let [카운트, 카운트변경] = useState(0);
+
+  function 제목변경(){
+    var newArr = [...글제목]; //deep copy
+    newArr[0]= "변경해버리기"
+    글제목변경(newArr)
+  }
+  
+  
+  return (
+    <div className="App">
+      <div className ='black-nav'>
+        <div style={{color : 'blue', fontSize : '30px'}} >Test Blog</div>
+      </div>
+      <img src={ poketmon } />
+      <div className = "list">
+      <button onClick={ 제목변경 }> 눌러주세용 </button>
+        <h3>{ 글제목[0] } <span onClick = { ()=>{카운트변경(카운트+1)} }>🥰</span> {카운트}</h3>
+        <p>5월 11일 발행</p>
+        <hr/>
+      </div>
+
+      <div className = "list">
+        <h3>{ 글제목[1] }</h3>
+        <p>5월 12일 발행</p>
+        <hr/>
+      </div>
+
+      <div className = "list">
+        <h3>{ 글제목[2] }</h3>
+        <p>5월 13일 발행</p>
+        <hr/>
+      </div> 
+    </div>
+  );
+}
+export default App;
+```
+</div>
 </details>
+
+</div>
+</details>  <!-- 5강 -->
+
+
+<details>
+<summary> 6강 Componet를 이용하여 UI만들기 </summary>
+<div markdown="1"> 
+
+
+
+</div>
+</details> <!-- 6강 -->
+
+
+
+
+</div>
+</details>  <!-- 리액트 정리 -->
+
 
 <details>
 <summary> Typescript </summary>
