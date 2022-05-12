@@ -33,6 +33,7 @@
 <summary> React </summary>
 <div markdown="1">   
 
+
 <details>
 <summary> OT-리액트 </summary>
 <div markdown="1">  
@@ -443,21 +444,147 @@ export default App;
 <summary> 6강 Componet를 이용하여 UI만들기 </summary>
 <div markdown="1"> 
 
+### 상세페이지 만들기
+원래는 라우터를 이용하여야 하지만 속성강의이므로 모달창을 이용하여 구현
 
+### Modal UI 디자인하기
+
+1. App.js파일에 코드 추가
+
+```javascript
+<div className = "modal">
+  <h2>제목</h2>
+  <p>날짜</p>
+  <p>상세내용</p>
+</div>
+```
+
+2. App.css파일에 코드 추가
+```javascript
+.modal{
+  margin-top: 20px;
+  padding: 20px;
+  background: #eee;
+}
+```
+
+### 복잡한 Div를 간결하게 하기 위해 HTML을 한 단어로 줄여서 쓰는 방법 Component문법 사용(함수와 같다)
+
+### 사용방법
+1. App funtion(main 함수라고 생각하면 될듯)이 끝나는 곳에 함수를만들고 
+2. funtion 이름() ## 이름은 대문자로 시작해야한다
+3. 축약을 원하는 곳에 해당 HTML 넣고
+4. <함수명/> 으로 사용
+
+```javascript
+function Modal(){ //............(1)(2)
+  return( //..............(3)
+      <div className = "modal">
+        <h2>제목</h2>
+        <p>날짜</p>
+        <p>상세내용</p>
+      </div>
+  )
+} //Modal fun
+```
+위 처럼 정의 한 후 메인 App함수에서 사용
+```javascript
+/* <Modal></Modal> */ // 1번방법
+   <Modal /> // 2번방법
+```
+### 만약 return()내부에 div로 묶는게 귀찮다면 <> </>이용
+```javascript
+<>
+<div className = "modal">
+  <h2>제목</h2>
+  <p>날짜</p>
+  <p>상세내용</p>
+</div>
+</> //지금은 어차피 한 개의 div라 크게 의미는 없다.
+```
+
+<details>
+<summary> App.js </summary>
+<div markdown="1">   
+
+```javascript
+/* eslint-disable */
+import React, { useState } from 'react';
+import logo from './logo.svg';
+import poketmon from './test.jpg';
+import './App.css';
+
+function App() {
+  let [글제목, 글제목변경] = useState(['새로고침 없이','스무스하게 렌더링하려면', 'state 사용하자' ]);
+  let [카운트, 카운트변경] = useState(0);
+
+  function 제목변경(){
+    var newArr = [...글제목]; //deep copy
+    newArr[0]= "변경해버리기"
+    글제목변경(newArr)
+  }
+  
+  
+  return (
+    <div className="App">
+      <div className ='black-nav'>
+        <div style={{color : 'blue', fontSize : '30px'}} >Test Blog</div>
+      </div>
+      <img src={ poketmon } />
+      <div className = "list">
+      <button onClick={ 제목변경 }> 눌러주세용 </button>
+        <h3>{ 글제목[0] } <span onClick = { ()=>{카운트변경(카운트+1)} }>🥰</span> {카운트}</h3>
+        <p>5월 11일 발행</p>
+        <hr/>
+      </div>
+
+      <div className = "list">
+        <h3>{ 글제목[1] }</h3>
+        <p>5월 12일 발행</p>
+        <hr/>
+      </div>
+
+      <div className = "list">
+        <h3>{ 글제목[2] }</h3>
+        <p>5월 13일 발행</p>
+        <hr/>
+      </div> 
+      {/* <Modal></Modal> */}
+      <Modal />
+
+
+    </div> //return div
+  );
+} //Function 
+
+function Modal(){
+  return(
+      <div className = "modal">
+        <h2>제목</h2>
+        <p>날짜</p>
+        <p>상세내용</p>
+      </div>
+  )
+} //Modal fun
+export default App;
+```
+
+</div>
+</details>
 
 </div>
 </details> <!-- 6강 -->
 
-
-
-
 </div>
-</details>  <!-- 리액트 정리 -->
+</details> <!-- 리액트 정리 -->
+
 
 
 <details>
 <summary> Typescript </summary>
 <div markdown="1">   
+
+
 
 </div>
 </details>
