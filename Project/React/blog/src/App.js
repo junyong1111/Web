@@ -39,7 +39,21 @@ function App() {
         <p>5월 13일 발행</p>
         <hr/>
       </div> 
-    </div>
+      {/* <Modal></Modal> */}
+      <Modal />
+
+
+    </div> //return div
   );
-}
+} //Function 
+
+function Modal(){
+  return(
+      <div className = "modal">
+        <h2>제목</h2>
+        <p>날짜</p>
+        <p>상세내용</p>
+      </div>
+  )
+} //Modal fun
 export default App;
