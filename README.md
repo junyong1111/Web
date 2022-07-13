@@ -1,5 +1,5 @@
 # WEB
-<details>
+<!-- <details>
 <summary> HTML </summary>
 <div markdown="1">   
 
@@ -20,14 +20,80 @@
 <div markdown="1">   
 
 </div>
-</details>
+</details> -->
 
 <details>
 <summary> Javascript </summary>
 <div markdown="1">   
 
+
+<details>
+<summary> 1강. 변수 </summary>
+<div markdown="1"> 
+
+### 변수의 특징
+
+1. 변수는 문자와 숫자 , $, _만 사용한다
+2. 첫글자는 숫자가 될 수 없다.
+3. 이미 자바스크립트에서 사용중인 예약어는 사용할 수 없다.
+4. Const를 사용할때는 대문자로 이름을 지어준다.
+5. 변수명은 읽기 쉽고 알기 쉽게 선언한다.
+
+### let, const를 이용하여 변수 선언
+- let , var 
+  - 변할 수 있는 변수
+- const 
+  - 바뀌지않는 상수
+
+
+```javascript
+let name = "KIM"
+const AGE = 20
+```
+
+### 자료형
+
+1. 정수형
+- integer
+2. 문자열
+- string
+3. 논리연산
+- boolean
+4. 객체
+- object
+
+#### # 참고 string + int  = string 
+#### 만약 해당 변수의 자료형이 무엇인지 궁금하다면 typeof(변수)를 이용한다.
+
+</div>
+</details> <!-- 1강 -->
+
+<details>
+<summary> 2강 alert, prompt, confirm </summary>
+<div markdown="1">   
+
+- alert(알림창)
+- prompt(입력받는 창)
+- confirm(확인받는 창)
+
+</div>
+</details> <!-- 2강 -->
+
+
+
+
+
+<!-- <details>
+<summary>  </summary>
+<div markdown="1">   
+
+</div>
+</details> -->
+
 </div>
 </details>
+
+### -----------------------Javascript
 
 <details>
 <summary> React </summary>
@@ -578,6 +644,8 @@ export default App;
 </div>
 </details> <!-- 리액트 정리 -->
 
+### -----------------------React
+
 
 
 <details>
@@ -589,7 +657,41 @@ export default App;
 </div>
 </details>
 
+### -----------------------Typescript 
 
+<summary> AWS </summary>
+<div markdown="1">  
+
+### 클라우드 서비스
+물리적 자원 혹은 논리적 자원을 <u> 대여</u>하는 것
+
+### 만약 서버를 하나 구축한다고 가정했을 때 
+1. 자신의 집에 장비를 직접 구축
+2. 클라우드 서비스에서 자원을 대여받는 것  
+- 클라우드 서비스의 장점
+1. 장비가 필요없음 따라서 구매나 관리가 필요없음
+2. 서버의 확장 또는 축소에 대응하기 좋다.
+
+애플리케이션 구축에 필요한 서비스들을 돈을 주고 대여하는 것 
+### 비용절감에 매우 효과적이다.
+
+<u>시작 전 계정 생성 및 계좌 등록 진행</u>
+
+<details>
+<summary>  </summary>
+<div markdown="1">   
+
+
+
+</div>
+</details>
+
+
+
+</div>
+</details> 
+
+### -----------------------AWS 
 
 <!-- <details>
 <summary>  </summary>
