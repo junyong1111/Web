@@ -1,4 +1,3 @@
-
 <summary> AWS </summary>
 <div markdown="1">  
 
@@ -36,6 +35,95 @@ Elastic Compute Cloud의 약자이며
 - 나머지 기본 값으로 진행 
 
 ### EC2의 어플 배포
+
+Node.js 어플
+
+1. 생성한 인스턴스 우측 하단에  <u> Iv4 퍼블릭 IP주소</u>를 복사
+2. 터미널 실행
+- 다운로드 받은 keypair가 있는 폴더로 이동
+```
+chmod 400 testKey.pem
+```
+- 위 명령어로 400권한으로 조정
+```
+ssh -i testKey.pem ec2-user@13.124.89.173
+```
+- ssh -i 키페어파일 ec2-user@IV4 퍼블릭 IP
+- 이후 등록 확인 메시지 yes 입력
+
+3. NVM(Node Version Manager).sh 설치
+
+[Github_link]('https://github.com/nvm-sh/nvm/blob/master/README.md')
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+```
+- ssh 터미널 창에서 아래 명령어로 설치
+
+```
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+```
+- 환경변수 설정
+
+```
+nvm install --lts
+```
+- --lts (안정적인 버전 사용)을 사용하여 노드 다운로드
+
+```
+nvm use --lts
+```
+- 위 명령어로 --lts 버전으로 스위칭
+
+4. App 폴더 생성
+```
+mkdir App
+cd App
+```
+
+5. Express 패키지 설치
+
+```
+npm i -S express
+```
+
+6. Node.js 앱 생성
+ 
+```
+vi index.js
+```
+- vi 편집기를 이용하여 다음 코드 작성
+
+```Javascript
+const express = require('express')
+const app = express()
+
+app.get('', async (req, res) => {
+    res.send("Hello World\n")
+})
+
+app.listen(3000, () =>{
+    console.log("App is listening 3000 port")
+})
+```
+- esc -> :wq로 저장 후 닫기
+
+```
+node index.js 
+```
+- index.js 파일 실행 후 확인
+
+7. Get 요청 보내기
+
+- 위 2번 과정 중 ssh명령어를 이용하여 추가로 동일한 인스턴스 접근 (터미널 2개)
+
+```
+curl http://localhost:3000
+```
+- 위 명령어로 인스턴스 내 로컬호스트 get요청 후 Hello World 결과 확인
+
+
+
 
 
 
