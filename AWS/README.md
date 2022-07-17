@@ -36,6 +36,9 @@ Elastic Compute Cloud의 약자이며
 
 ### EC2의 자원 생성
 
+##### <u>인스턴스 1개가 컴퓨터 1개라고 생각</u>
+##### 프리 티어 사용가능으로 셋팅
+
 1. AWS 웹 브라우저 접속 후 <u>아시아 태평양(서울)로 지역설정</u> 
 2. 서비스에서 EC2를 찾은 후 인스턴스 탭에서 인스턴스 시작 클릭
 - Quick start -> Amazon Linux(OS)로 선택
@@ -53,6 +56,7 @@ Node.js 어플
 chmod 400 testKey.pem
 ```
 - 위 명령어로 400권한으로 조정
+#####  원격 제어
 ```
 ssh -i testKey.pem ec2-user@13.124.89.173
 ```
