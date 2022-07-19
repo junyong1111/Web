@@ -252,6 +252,48 @@ CRUD (Create Read Update Delete)를 할 수 있도록!
 <summary> CloudFront  </summary>
 <div markdown="1">
 
+ColudFront = Cache Server + CDN
+
+#### Cache 
+- 사용자에게 1번 보낸적이 있다면 그 기록을 저장해서 다음번에 그 데이터를 이용
+
+#### CDN 
+Content Delivery Network
+- 전세계 어디에 있던지 빠르게 서비스를 제공
+- 전세계에 있는 엣지 로케이션을 통해 사용자에게 웹 서비스를 제공
+
+EC2로 만든 웹서버를 이용하여 실습
+
+### CloudFront 생성
+1. 서비스 -> 네트워킹 및 컨테츠 전송 -> CloudFront 클릭
+
+- 요청 Clinet -> Cloud Front(Distribution) -> Web Server(Origin) 
+- 전달 Clinet <- Cloud Front <- Web Server 
+- 이후 동일한 요청에 대해서 Clinet <-> Cloud Front 
+
+2. CloudFront 배포 생성
+- 원본 도메인 선택 : 웹서버 주소 (도메인 만)
+- HTTP Port : Origin(포트 번호)
+위 2가지만 설정 후 생성
+
+####  #일반적인 웹서버보다 더 빠른 서비스 제공이 가능하나 동적으로 반응하지는 못함 즉 신선도가 떨어짐!! 이를 해결해야 함
+
+### 캐쉬 설정
+
+만들어진 CloudFront 탭 -> 행동 클릭 -> Object Caching : Use Origin Cache Headers 
+
+WEB Browser -> Colud Front -> WEB Server
+- Chche-Control : max-age = 60
+    - 60초동안 유효하니 Server에게 다시 요청 필요없음
+WEB Browser <- Colud Front <- WEB Server 
+
+CloudFonrt는 캐쉬를 24시간동안 유지한다 이 때 웹서버에 코드에서 캐쉬 유효시간하고 맞춰주는 작업이 필요하다.
+
+###  캐쉬 무효화
+- Create Invaltidation : 파일 무효화 
+-  index.php(무효화 하려는 파일 혹은 경로)
+유료 시스템임 
+
 
 
 </div>
